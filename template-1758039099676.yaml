@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Network Stack
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+
+  Subnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.1.0/24
+
+Outputs:
+  VpcId:
+    Value: !Ref VPC
+    Export:
+      Name: MyLab-VpcId
+  SubnetIds:
+    Value: !Ref Subnet1
+    Export:
+      Name: MyLab-SubnetIds

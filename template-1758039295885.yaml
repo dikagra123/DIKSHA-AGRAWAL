@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Application Stack
+
+Parameters:
+  VpcId:
+    Type: String
+  SubnetIds:
+    Type: String
+
+Resources:
+  AppInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0
+      SubnetId: !Ref SubnetIds
+
+Outputs:
+  AppInstanceId:
+    Value: !Ref AppInstance
